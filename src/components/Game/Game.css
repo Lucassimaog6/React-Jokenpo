@@ -1,0 +1,11 @@
+.choices{
+    min-height: 20rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.result{
+    text-align: center;
+    font-size: 3rem;
+}

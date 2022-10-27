@@ -1,0 +1,10 @@
+.scoreContainer{
+    display: flex;
+    justify-content: space-around;
+}
+
+.scoreContainer .col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

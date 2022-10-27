@@ -1,0 +1,13 @@
+.choiceContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.choiceContainer img{
+    height: 5rem;
+}
+
+.choiceContainer footer{
+    text-align: center;
+    color: gray;
+}
