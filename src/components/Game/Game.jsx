@@ -1,19 +1,27 @@
 import "./Game.css"
 import Choice from "../Choice/Choice.jsx";
+import Score from "../Score/Score.jsx";
 import {useEffect, useState} from "react";
-import {Pedra, Papel, Tesoura, Thinking} from "../Images.jsx";
+import {Papel, Pedra, Tesoura, Thinking} from "../Images.jsx";
 
 function Game() {
+    const [score, setScore] = useState({
+        "vitorias": 0,
+        "empates": 0,
+        "derrotas": 0,
+    })
     const [imgChoice, setImgChoice] = useState()
     const [computerImgChoice, setComputerImgChoice] = useState(Thinking)
     const [result, setResult] = useState()
     const handleChoice = img => {
         setImgChoice(img);
-        switch(Math.floor(Math.random() * 3) + 1){
+        switch (Math.floor(Math.random() * 3) + 1) {
             case 1:
-                setComputerImgChoice(Pedra); break;
+                setComputerImgChoice(Pedra);
+                break;
             case 2:
-                setComputerImgChoice(Papel); break;
+                setComputerImgChoice(Papel);
+                break;
             case 3:
                 setComputerImgChoice(Tesoura); break;
         }
@@ -21,28 +29,36 @@ function Game() {
     useEffect(()=>{
         if (imgChoice === computerImgChoice) {
             setResult("Empate")
+            setScore({...score, empates: score.empates + 1});
         }
         if (imgChoice === Pedra && computerImgChoice === Tesoura) {
             setResult("Vitória")
+            setScore({...score, vitorias: score.vitorias + 1});
         }
         if (imgChoice === Tesoura && computerImgChoice === Papel) {
             setResult("Vitória")
+            setScore({...score, vitorias: score.vitorias + 1});
         }
         if (imgChoice === Papel && computerImgChoice === Pedra) {
             setResult("Vitória")
+            setScore({...score, vitorias: score.vitorias + 1});
         }
         if (imgChoice === Tesoura && computerImgChoice === Pedra) {
             setResult("Derrota")
+            setScore({...score, derrotas: score.derrotas + 1});
         }
         if (imgChoice === Papel && computerImgChoice === Tesoura) {
             setResult("Derrota")
+            setScore({...score, derrotas: score.derrotas + 1});
         }
         if (imgChoice === Pedra && computerImgChoice === Papel) {
             setResult("Derrota")
+            setScore({...score, derrotas: score.derrotas + 1});
         }
     },[imgChoice,computerImgChoice])
     return (
         <main>
+            <Score score={score}/>
             {result &&
                 <h1 className="result">{result}</h1>
             }
