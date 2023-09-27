@@ -64,8 +64,8 @@ function Game() {
             }
             {imgChoice &&
                 <div className="choices">
-                    <img className="computerImage" src={computerImgChoice} alt="imagem do escolha do computador"/>
                     <img className="userImage" src={imgChoice} alt="imagem escolhida"/>
+                    <img className="computerImage" src={computerImgChoice} alt="imagem do escolha do computador"/>
                 </div>
             }
             <Choice handleChoice={handleChoice}/>
